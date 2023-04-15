@@ -29,12 +29,12 @@ export default function Products() {
   return (
     <div className="mt-10">
       <div className="text-right px-5">
-        <button title="Tambah produk">
+        <div title="Tambah produk">
           <Link to={"/add"}>
             <AddBoxIcon />
             PRODUK
           </Link>
-        </button>
+        </div>
       </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -55,16 +55,15 @@ export default function Products() {
                 <TableCell align="left">{row.title}</TableCell>
                 <TableCell align="left">{row.categories}</TableCell>
                 <TableCell align="left">{rupiah(row.price)}</TableCell>
-                <div>
-                  <Link to={`edit/${row._id}`}>
-                    <span className="px-2" title="Edit">
-                      <Edit />
-                    </span>
-                  </Link>
-                  <button className="px-2" title="Delete" onClick={() => dispatch(deleteProduct(row._id)) && toast.error("Produk telah dihapus...")}>
-                    <Delete />
-                  </button>
-                </div>
+
+                <Link to={`edit/${row._id}`}>
+                  <td className="px-2" title="Edit">
+                    <Edit />
+                  </td>
+                </Link>
+                <button className="px-2" title="Delete" onClick={() => dispatch(deleteProduct(row._id)) && toast.error("Produk telah dihapus...")}>
+                  <Delete />
+                </button>
               </TableRow>
             ))}
           </TableBody>

@@ -14,6 +14,7 @@
 - react router dom
 - mongodb
 - axios
+- jsonwebtoken
 - material ui
 - tailwind
 - toastify
@@ -22,7 +23,7 @@
 
 ## Cara menjalankan aplikasi
 
-Clone aplikasi ke lokal mesin anda dengan perintah git clone https://github.com/franskbarek/product-app-fullstack.git
+Clone aplikasi ke lokal mesin anda dengan perintah git clone `https://github.com/franskbarek/product-app-fullstack.git`
 
 ### Backend :
 
@@ -34,7 +35,7 @@ Install dependensi dengan perintah **`npm install`** atau **`yarn`** jika menggu
 
 Jalankan aplikasi backend dengan perintah **`npm run start-dev`** atau **`yarn start-dev`** jika menggunakan yarn
 
-API akan berjalan pada http://localhost:5000 dan siap digunakan.
+API akan berjalan pada `http://localhost:5000/api/v1` dan siap digunakan.
 
 ### Frontend :
 
@@ -46,6 +47,6 @@ Install dependensi dengan perintah **`npm install`** atau **`yarn`** jika menggu
 
 Jalankan aplikasi backend dengan perintah **`npm run dev`** atau **`yarn dev`** jika menggunakan yarn
 
-User Interface Aplikasi akan berjalan pada http://localhost:5173 dan siap digunakan
+User Interface Aplikasi akan berjalan pada `http://localhost:5173` dan siap digunakan
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
