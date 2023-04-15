@@ -4,7 +4,7 @@
 
 # Product App Fullstack
 
-![product](https://ibb.co/ww8fKZq)
+![capture](https://i.ibb.co/Brv9gHJ/capture-product2.jpg)
 
 ## Teknologi yang digunakan
 
