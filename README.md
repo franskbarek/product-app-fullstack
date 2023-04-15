@@ -6,6 +6,8 @@
 
 ![capture](https://i.ibb.co/Brv9gHJ/capture-product2.jpg)
 
+![capture-register](https://i.ibb.co/Hrg3sMF/widya-register.png)
+
 ## Teknologi yang digunakan
 
 - react + vite
