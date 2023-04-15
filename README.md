@@ -20,6 +20,7 @@
 - axios
 - jsonwebtoken
 - material ui
+- formik
 - tailwind
 - toastify
 
