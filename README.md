@@ -1,10 +1,10 @@
 <a name="readme-top"></a>
 
-[![GitHub Stars](https://img.shields.io/github/stars/franskbarek/klasmen-sepakbola.svg)](https://github.com/franskbarek/product-app-fullstack/stars) [![GitHub Issues](https://img.shields.io/github/issues/https://github.com/franskbarek/product-app-fullstack.svg)](https://github.com/franskbarek/product-app-fullstack/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/franskbarek/product-app-fullstack.svg)](https://github.com/franskbarek/product-app-fullstack/stars) [![GitHub Issues](https://img.shields.io/github/issues/franskbarek/product-app-fullstack.svg)](https://github.com/franskbarek/product-app-fullstack/issues)
 
 # Product App Fullstack
 
-![classement](./client/public/capture-product.png)
+![classement](./client/public/capture-product2.jpg)
 
 ## Teknologi yang digunakan
 
