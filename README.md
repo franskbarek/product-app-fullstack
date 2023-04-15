@@ -54,4 +54,12 @@ Jalankan aplikasi backend dengan perintah **`npm run dev`** atau **`yarn dev`** 
 
 User Interface Aplikasi akan berjalan pada `http://localhost:5173` dan siap digunakan
 
+---
+
+**_Catatan_**
+
+_.env file include url's sengaja saya share jika ingin digunakan_
+
+_akun login yang sudah dibuat: username: **admin123** pass: **admin123**_
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
