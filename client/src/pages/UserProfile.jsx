@@ -11,11 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
 export default function UserProfile() {
-  const { id } = useParams();
-
-  const dispatch = useDispatch();
-
-  const [infoUser, setInfoUser] = useState([]);
+  const [infoUser, setInfoUser] = useState({});
 
   const user = useSelector((state) => state.user.currentUser);
 
@@ -33,10 +29,8 @@ export default function UserProfile() {
   };
 
   useEffect(() => {
-    if (user) {
-      getUser();
-    }
-  }, [user]);
+    getUser();
+  }, []);
 
   return (
     <div className="mt-10">
