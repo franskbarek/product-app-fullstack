@@ -6,11 +6,12 @@ const API_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 export const getProducts = createAsyncThunk("products/getProducts", async () => {
   try {
     const response = await publicRequest.get(`${API_BASE_URL}/products`);
+    return response.data;
   } catch (err) {
     console.error(err.message);
   }
-  const response = await publicRequest.get(`${API_BASE_URL}/products`);
-  return response.data;
+  // const response = await publicRequest.get(`${API_BASE_URL}/products`);
+  // return response.data;
 });
 
 export const saveProduct = createAsyncThunk("products/saveProduct", async ({ title, categories, price }) => {

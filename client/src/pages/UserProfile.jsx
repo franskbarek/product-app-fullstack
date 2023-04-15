@@ -11,26 +11,22 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
 export default function UserProfile() {
-  const [infoUser, setInfoUser] = useState({});
-
   const user = useSelector((state) => state.user.currentUser);
 
-  const userId = useSelector((state) => state.user.currentUser._id);
+  // const userId = useSelector((state) => state.user.currentUser._id);
 
-  console.log(infoUser);
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     try {
+  //       const response = await userRequest.get(`${import.meta.env.VITE_APP_BASE_URL}/users/find/${userId}`);
+  //       return response.data;
+  //     } catch (err) {
+  //       console.error(err.message);
+  //     }
+  //   };
 
-  const getUser = async () => {
-    try {
-      const response = await userRequest.get(`${import.meta.env.VITE_APP_BASE_URL}/users/find/${userId}`);
-      setInfoUser(response.data);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
+  //   getUser();
+  // }, []);
 
   return (
     <div className="mt-10">

@@ -20,7 +20,17 @@ function createData(title, categories, price) {
 
 export default function Products() {
   const dispatch = useDispatch();
+
   const products = useSelector(productSelectors.selectAll);
+
+  const user = useSelector((state) => state.user.currentUser);
+
+  const handleDelete = (row) => {
+    if (user) {
+      dispatch(deleteProduct(row));
+      toast.error("Produk telah dihapus...");
+    }
+  };
 
   React.useEffect(() => {
     dispatch(getProducts());
@@ -55,15 +65,16 @@ export default function Products() {
                 <TableCell align="left">{row.title}</TableCell>
                 <TableCell align="left">{row.categories}</TableCell>
                 <TableCell align="left">{rupiah(row.price)}</TableCell>
-
-                <Link to={`edit/${row._id}`}>
-                  <td className="px-2" title="Edit">
+                <TableCell align="right">
+                  <Link to={`edit/${row._id}`} title="Edit">
                     <Edit />
-                  </td>
-                </Link>
-                <button className="px-2" title="Delete" onClick={() => dispatch(deleteProduct(row._id)) && toast.error("Produk telah dihapus...")}>
-                  <Delete />
-                </button>
+                  </Link>
+                </TableCell>
+                <TableCell>
+                  <button className="px-2" title="Delete" onClick={() => handleDelete(row._id)}>
+                    <Delete />
+                  </button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -22,13 +22,11 @@ const validationSchema = yup.object({
 });
 
 export default function Register() {
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState([]);
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
-  const currentUser = useSelector((state) => state.user.currentUser);
 
   const handleChange = (event) => {
     setGender(event.target.value);
@@ -52,7 +50,7 @@ export default function Register() {
         username: values.username,
         email: values.email,
         password: values.password,
-        gender: gender,
+        gender,
       };
       // alert(JSON.stringify(values, null, 2));
       try {

@@ -14,6 +14,8 @@ export default function EditProduct() {
 
   const product = useSelector((state) => productSelectors.selectById(state, id));
 
+  const user = useSelector((state) => state.user.currentUser);
+
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
@@ -28,9 +30,11 @@ export default function EditProduct() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    await dispatch(updateProduct({ id, title, categories, price }));
-    toast.success("Berhasil update produk");
-    navigate("/");
+    if (user) {
+      await dispatch(updateProduct({ id, title, categories, price }));
+      toast.success("Berhasil update produk");
+      navigate("/");
+    }
   };
 
   return (
