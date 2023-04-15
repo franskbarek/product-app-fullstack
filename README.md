@@ -4,9 +4,11 @@
 
 # Product App Fullstack
 
-![capture](https://i.ibb.co/Brv9gHJ/capture-product2.jpg)
+![capture-main](https://i.ibb.co/Brv9gHJ/capture-product2.jpg)
 
 ![capture-register](https://i.ibb.co/Hrg3sMF/widya-register.png)
+
+![capture-login](https://i.ibb.co/R27x75D/widya-login.png)
 
 ## Teknologi yang digunakan
 
