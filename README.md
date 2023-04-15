@@ -38,7 +38,7 @@ Install node modules yang terdapat pada **`package.json`** sebelum menjalankan a
 
 Install dependensi dengan perintah **`npm install`** atau **`yarn`** jika menggunakan yarn
 
-Jalankan aplikasi backend dengan perintah **`npm run start-dev`** atau **`yarn start-dev`** jika menggunakan yarn
+Jalankan Api dengan perintah **`npm run start`** atau **`yarn start`** jika menggunakan yarn
 
 API akan berjalan pada `http://localhost:5000/api/v1` dan siap digunakan.
 
@@ -50,7 +50,7 @@ Install node modules yang terdapat pada **`package.json`** sebelum menjalankan a
 
 Install dependensi dengan perintah **`npm install`** atau **`yarn`** jika menggunakan yarn
 
-Jalankan aplikasi backend dengan perintah **`npm run dev`** atau **`yarn dev`** jika menggunakan yarn
+Jalankan aplikasi dengan perintah **`npm run dev`** atau **`yarn dev`** jika menggunakan yarn
 
 User Interface Aplikasi akan berjalan pada `http://localhost:5173` dan siap digunakan
 
