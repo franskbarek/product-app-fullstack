@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/userRedux";
 
@@ -23,6 +23,8 @@ function Navbar() {
   const user = useSelector((state) => state.user.currentUser);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const pages = ["Home"];
 
@@ -54,6 +56,7 @@ function Navbar() {
 
   const handleLogout = () => {
     dispatch(logout());
+    navigate("/login");
     handleCloseUserMenu();
   };
 

@@ -10,7 +10,7 @@ import { rupiah } from "../utils/moneyFormat";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, getProducts, productSelectors } from "../redux/productRedux";
 import { Delete, Edit } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { toast } from "react-toastify";
 
@@ -23,20 +23,16 @@ export default function Products() {
 
   const products = useSelector(productSelectors.selectAll);
 
-  const user = useSelector((state) => state.user.currentUser);
-
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
 
   const handleDelete = (rowId) => {
-    if (products && user) {
-      try {
-        dispatch(deleteProduct(rowId));
-        toast.error("Produk telah dihapus...");
-      } catch (err) {
-        console.error(err.message);
-      }
+    try {
+      dispatch(deleteProduct(rowId));
+      toast.error("Produk telah dihapus...");
+    } catch (err) {
+      console.error(err.message);
     }
   };
 
@@ -44,7 +40,7 @@ export default function Products() {
     <div className="mt-10">
       <div className="text-right px-5">
         <div title="Tambah produk">
-          <Link to={"/add"}>
+          <Link to={"/add"} onClick="window.location.reload()">
             <AddBoxIcon />
             PRODUK
           </Link>
@@ -70,12 +66,12 @@ export default function Products() {
                 <TableCell align="left">{row.categories}</TableCell>
                 <TableCell align="left">{rupiah(row.price)}</TableCell>
                 <TableCell align="right">
-                  <Link to={`edit/${row._id}`} title="Edit">
+                  <Link to={`edit/${row._id}`} title="Edit" onClick="window.location.reload()">
                     <Edit />
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <button className="px-2" title="Delete" onClick={() => handleDelete(row._id)}>
+                  <button className="px-2" title="Delete" onClick={() => handleDelete(row._id) && "window.location.reload()"}>
                     <Delete />
                   </button>
                 </TableCell>
