@@ -27,8 +27,12 @@ export default function Products() {
 
   const handleDelete = (row) => {
     if (user) {
-      dispatch(deleteProduct(row));
-      toast.error("Produk telah dihapus...");
+      try {
+        dispatch(deleteProduct(row));
+        toast.error("Produk telah dihapus...");
+      } catch (err) {
+        console.error(err.message);
+      }
     }
   };
 

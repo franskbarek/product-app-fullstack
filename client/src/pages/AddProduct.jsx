@@ -18,7 +18,7 @@ export default function AddProduct() {
       toast.success("Berhasil tambah produk baru");
       navigate("/");
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
     }
   };
 

@@ -31,9 +31,13 @@ export default function EditProduct() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     if (user) {
-      await dispatch(updateProduct({ id, title, categories, price }));
-      toast.success("Berhasil update produk");
-      navigate("/");
+      try {
+        await dispatch(updateProduct({ id, title, categories, price }));
+        toast.success("Berhasil update produk");
+        navigate("/");
+      } catch (err) {
+        console.error(err.message);
+      }
     }
   };
 
