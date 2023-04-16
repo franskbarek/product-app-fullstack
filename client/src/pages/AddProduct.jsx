@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { saveProduct } from "../redux/productRedux";
 import { toast } from "react-toastify";
 
@@ -11,12 +11,16 @@ export default function AddProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const user = useSelector((state) => state.user.currentUser);
+
   const createProduct = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(saveProduct({ title, categories, price }));
-      toast.success("Berhasil tambah produk baru");
-      navigate("/");
+      if (user) {
+        await dispatch(saveProduct({ title, categories, price }));
+        toast.success("Berhasil tambah produk baru");
+        navigate("/");
+      }
     } catch (err) {
       console.error(err.message);
     }

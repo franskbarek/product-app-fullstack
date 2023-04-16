@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -14,9 +14,9 @@ import { Link } from "react-router-dom";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { toast } from "react-toastify";
 
-function createData(title, categories, price) {
-  return { title, categories, price };
-}
+// function createData(title, categories, price) {
+//   return { title, categories, price };
+// }
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -25,20 +25,20 @@ export default function Products() {
 
   const user = useSelector((state) => state.user.currentUser);
 
-  const handleDelete = (row) => {
-    if (user) {
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
+  const handleDelete = (rowId) => {
+    if (products && user) {
       try {
-        dispatch(deleteProduct(row));
+        dispatch(deleteProduct(rowId));
         toast.error("Produk telah dihapus...");
       } catch (err) {
         console.error(err.message);
       }
     }
   };
-
-  React.useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
 
   return (
     <div className="mt-10">

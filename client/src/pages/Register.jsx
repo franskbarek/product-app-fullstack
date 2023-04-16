@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { logout, registerSuccess } from "../redux/userRedux";
 
 const validationSchema = yup.object({
   firstname: yup.string("Masukan nama depan").min(3, "Nama depan minimal 3 karakter").required("Nama depan wajib diisi"),
@@ -28,7 +29,7 @@ export default function Register() {
 
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
+  const handleGender = (event) => {
     setGender(event.target.value);
   };
 
@@ -55,8 +56,11 @@ export default function Register() {
       // alert(JSON.stringify(values, null, 2));
       try {
         await register(dispatch, field);
-        navigate("/");
-        toast.success("Selamat, anda berhasil melakukan registrasi akun");
+        if (registerSuccess()) {
+          dispatch(logout());
+          navigate("/login");
+          toast.success("Selamat, anda berhasil melakukan registrasi akun");
+        }
         // } else {
         // toast.error("Terjadi kesalahan di sisi server, tunggu beberapa saat dan submit kembali!");
       } catch (err) {
@@ -96,7 +100,7 @@ export default function Register() {
         <div className="mt-4 flex">
           <FormControl required sx={{ width: "100%" }}>
             <InputLabel id="demo-simple-select-required-label">Jenis Kelamin</InputLabel>
-            <Select labelId="demo-simple-select-required-label" id="demo-simple-select-required" value={gender} label="Jenis Kelamin" onChange={handleChange}>
+            <Select labelId="demo-simple-select-required-label" id="demo-simple-select-required" value={gender} label="Jenis Kelamin" onChange={handleGender}>
               <MenuItem value="">
                 <em>--Pilih--</em>
               </MenuItem>
