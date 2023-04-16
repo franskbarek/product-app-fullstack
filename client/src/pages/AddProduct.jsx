@@ -13,9 +13,13 @@ export default function AddProduct() {
 
   const createProduct = async (e) => {
     e.preventDefault();
-    await dispatch(saveProduct({ title, categories, price }));
-    toast.success("Berhasil tambah produk baru");
-    navigate("/");
+    try {
+      await dispatch(saveProduct({ title, categories, price }));
+      toast.success("Berhasil tambah produk baru");
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
