@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { getProducts } from "../redux/productRedux";
 
 const validationSchema = yup.object({
   username: yup.string("Masukan Username").min(3, "Username minimal 3 karakter").required("Username wajib diisi"),
@@ -19,8 +20,6 @@ export default function Login() {
   const navigate = useNavigate();
 
   const { isFetching, error } = useSelector((state) => state.user);
-
-  const currentUser = useSelector((state) => state.user.currentUser);
 
   const formik = useFormik({
     initialValues: {
@@ -38,8 +37,9 @@ export default function Login() {
 
       try {
         await login(dispatch, field);
-        if (!error && currentUser) toast.success("Berhasil login");
+        await window.location.reload();
         navigate("/");
+        toast.success("Berhasil login");
       } catch (err) {
         console.error(err.message);
       }

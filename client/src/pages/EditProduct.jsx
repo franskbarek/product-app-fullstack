@@ -33,8 +33,8 @@ export default function EditProduct() {
     if (user) {
       try {
         await dispatch(updateProduct({ id, title, categories, price }));
-        toast.success("Berhasil update produk");
         navigate("/");
+        toast.success("Berhasil update produk");
       } catch (err) {
         console.error(err.message);
       }

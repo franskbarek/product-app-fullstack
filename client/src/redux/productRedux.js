@@ -15,27 +15,39 @@ export const getProducts = createAsyncThunk("products/getProducts", async () => 
 });
 
 export const saveProduct = createAsyncThunk("products/saveProduct", async ({ title, categories, price }) => {
-  const response = await userRequest.post(`${API_BASE_URL}/products/add`, {
-    title,
-    categories,
-    price,
-  });
-  return response.data;
+  try {
+    const response = await userRequest.post(`${API_BASE_URL}/products/add`, {
+      title,
+      categories,
+      price,
+    });
+    return response.data;
+  } catch (err) {
+    console.error(err.message);
+  }
 });
 
 export const updateProduct = createAsyncThunk("products/updateProduct", async ({ id, title, categories, price }) => {
-  const response = await userRequest.patch(`${API_BASE_URL}/products/${id}`, {
-    id,
-    title,
-    categories,
-    price,
-  });
-  return response.data;
+  try {
+    const response = await userRequest.patch(`${API_BASE_URL}/products/${id}`, {
+      id,
+      title,
+      categories,
+      price,
+    });
+    return response.data;
+  } catch (err) {
+    console.error(err.message);
+  }
 });
 
 export const deleteProduct = createAsyncThunk("products/deleteProduct", async (_id) => {
-  await userRequest.delete(`${API_BASE_URL}/products/${_id}`);
-  return _id;
+  try {
+    await userRequest.delete(`${API_BASE_URL}/products/${_id}`);
+    return _id;
+  } catch (err) {
+    console.error(err.message);
+  }
 });
 
 const productEntity = createEntityAdapter({

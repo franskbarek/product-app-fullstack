@@ -23,8 +23,15 @@ export default function Products() {
 
   const products = useSelector(productSelectors.selectAll);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    dispatch(getProducts());
+    const getData = async () => {
+      setLoading(true);
+      await dispatch(getProducts());
+      setLoading(false);
+    };
+    getData();
   }, [dispatch]);
 
   const handleDelete = (rowId) => {
@@ -36,11 +43,15 @@ export default function Products() {
     }
   };
 
+  if (loading) {
+    return <div className="text-center m-20">Loading...</div>;
+  }
+
   return (
     <div className="mt-10">
       <div className="text-right px-5">
         <div title="Tambah produk">
-          <Link to={"/add"} onClick="window.location.reload()">
+          <Link to={"/add"}>
             <AddBoxIcon />
             PRODUK
           </Link>
@@ -66,12 +77,12 @@ export default function Products() {
                 <TableCell align="left">{row.categories}</TableCell>
                 <TableCell align="left">{rupiah(row.price)}</TableCell>
                 <TableCell align="right">
-                  <Link to={`edit/${row._id}`} title="Edit" onClick="window.location.reload()">
+                  <Link to={`edit/${row._id}`} title="Edit">
                     <Edit />
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <button className="px-2" title="Delete" onClick={() => handleDelete(row._id) && "window.location.reload()"}>
+                  <button className="px-2" title="Delete" onClick={() => handleDelete(row._id)}>
                     <Delete />
                   </button>
                 </TableCell>

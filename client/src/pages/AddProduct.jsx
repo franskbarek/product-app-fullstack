@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { saveProduct } from "../redux/productRedux";
 import { toast } from "react-toastify";
 
@@ -11,20 +11,20 @@ export default function AddProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const user = useSelector((state) => state.user.currentUser);
-
   const createProduct = async (e) => {
     e.preventDefault();
     try {
-      if (user) {
-        await dispatch(saveProduct({ title, categories, price }));
-        toast.success("Berhasil tambah produk baru");
-        navigate("/");
-      }
+      await dispatch(saveProduct({ title, categories, price }));
+      navigate("/");
+      toast.success("Berhasil tambah produk baru");
     } catch (err) {
       console.error(err.message);
     }
   };
+
+  useEffect(() => {
+    dispatch(saveProduct());
+  }, [dispatch]);
 
   return (
     <div className="mt-10">
